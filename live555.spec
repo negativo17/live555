@@ -1,6 +1,6 @@
 Name:           live555
-Version:        2016.03.14
-Release:        2%{?dist}
+Version:        2016.05.20
+Release:        1%{?dist}
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
 License:        LGPLv2+
 URL:            http://live555.com/liveMedia/
@@ -72,7 +72,6 @@ chmod +x %{buildroot}%{_libdir}/*
 %files libs
 %{!?_licensedir:%global license %%doc}
 %license COPYING
-%doc README
 %{_libdir}/*.so.*
 
 %files devel
@@ -80,6 +79,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_includedir}/*
 
 %changelog
+* Tue May 24 2016 Simone Caronni <negativo17@gmail.com> - 2016.05.20-1
+- Update to version 2016.05.20.
+
 * Wed Mar 16 2016 Simone Caronni <negativo17@gmail.com> - 2016.03.14-2
 - Fix libs subpackage rename.
 
