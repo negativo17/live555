@@ -1,11 +1,12 @@
 Name:           live555
-Version:        2016.05.20
+Version:        2016.07.19
 Release:        1%{?dist}
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
 License:        LGPLv2+
 URL:            http://live555.com/liveMedia/
 
 Source0:        http://live555.com/liveMedia/public/live.%{version}.tar.gz
+Patch0:         https://anonscm.debian.org/cgit/pkg-multimedia/liblivemedia.git/plain/debian/patches/add-pkgconfig-file.patch
 
 %description
 This code forms a set of C++ libraries for multimedia streaming, using open
@@ -50,6 +51,7 @@ This package contains libraries for applications that use %{name}.
 
 %prep
 %setup -q -n live
+%patch0 -p1
 sed -i -e 's|-O2|%{optflags}|' config.linux-with-shared-libraries
 
 %build
@@ -75,10 +77,15 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/*.so.*
 
 %files devel
-%{_libdir}/*.so
 %{_includedir}/*
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Fri Jul 22 2016 Simone Caronni <negativo17@gmail.com> - 2016.07.19-1
+- Update to 2016.07.19.
+- Add pkg-config patch from Debian.
+
 * Tue May 24 2016 Simone Caronni <negativo17@gmail.com> - 2016.05.20-1
 - Update to version 2016.05.20.
 
