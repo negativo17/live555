@@ -1,0 +1,38 @@
+diff -Naur live.old/live555.pc.in live/live555.pc.in
+--- live.old/live555.pc.in	1970-01-01 01:00:00.000000000 +0100
++++ live/live555.pc.in	2016-11-09 10:14:30.243669441 +0100
+@@ -0,0 +1,9 @@
++prefix=@PREFIX@
++libdir=@LIBDIR@
++includedir=${prefix}/include
++
++Name: live555
++Description: multimedia RTSP streaming library
++Version: @VERSION@
++Cflags: -I${includedir}/liveMedia -I${includedir}/groupsock -I${includedir}/BasicUsageEnvironment -I${includedir}/UsageEnvironment
++Libs: -L${libdir} -lliveMedia -lgroupsock -lBasicUsageEnvironment -lUsageEnvironment
+diff -Naur live.old/Makefile.head live/Makefile.head
+--- live.old/Makefile.head	2016-11-09 10:14:24.845589342 +0100
++++ live/Makefile.head	2016-11-09 10:14:30.223669144 +0100
+@@ -1 +1,4 @@
++PREFIX = /usr/local
++LIBDIR = /usr/local/lib
++VERSION = $(shell grep LIVEMEDIA_LIBRARY_VERSION_STRING liveMedia/include/liveMedia_version.hh | sed 's/.*"\([^"]*\)".*/\1/')
+ ##### Change the following for your environment:
+diff -Naur live.old/Makefile.tail live/Makefile.tail
+--- live.old/Makefile.tail	2016-11-09 10:14:24.845589342 +0100
++++ live/Makefile.tail	2016-11-09 10:14:30.243669441 +0100
+@@ -22,7 +22,12 @@
+ 	@echo
+ 	@echo "For more information about this source code (including your obligations under the LGPL), please see our FAQ at http://live555.com/liveMedia/faq.html"
+ 
+-install:
++install_shared_libraries:
++	install -d $(DESTDIR)$(LIBDIR)/pkgconfig
++	sed "s#@PREFIX@#$(PREFIX)#;s#@LIBDIR@#$(LIBDIR)#;s#@VERSION@#$(VERSION)#" live555.pc.in > $(DESTDIR)$(LIBDIR)/pkgconfig/live555.pc
++	chmod 644 $(DESTDIR)$(LIBDIR)/pkgconfig/live555.pc
++
++install: $(INSTALL2)
+ 	cd $(LIVEMEDIA_DIR) ; $(MAKE) install
+ 	cd $(GROUPSOCK_DIR) ; $(MAKE) install
+ 	cd $(USAGE_ENVIRONMENT_DIR) ; $(MAKE) install
