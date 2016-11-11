@@ -1,6 +1,7 @@
 Name:           live555
 Version:        2016.11.06
-Release:        1%{?dist}
+Release:        2%{?dist}
+Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
 License:        LGPLv2+
 URL:            http://live555.com/liveMedia/
@@ -21,7 +22,7 @@ to build basic RTSP or SIP clients and servers.
 
 %package        devel
 Summary:        Development files for live555.com streaming libraries
-Requires:       %{name}-libs%{?_isa} = %{version}-%{release}
+Requires:       %{name}-libs%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 
 %description	devel
 This code forms a set of C++ libraries for multimedia streaming, using open
@@ -37,8 +38,7 @@ developing applications that use %{name}.
 
 %package        libs
 Summary:        RTP/RTCP, RTSP, SIP streaming libraries
-# Obsolete base live555 just once, when upgrading to this release
-Obsoletes:      %{name} < 2016.03.14
+Obsoletes:      %{name} < %{?epoch:%{epoch}:}2016.03.14
 
 %description	libs
 This code forms a set of C++ libraries for multimedia streaming, using open
@@ -84,6 +84,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Fri Nov 11 2016 Simone Caronni <negativo17@gmail.com> - 1:2016.11.06-2
+- Update Epoch.
+
 * Wed Nov 09 2016 Simone Caronni <negativo17@gmail.com> - 2016.11.06-1
 - Update to 2016.11.06.
 
