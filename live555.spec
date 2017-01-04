@@ -1,12 +1,13 @@
 Name:           live555
-Version:        2016.11.06
-Release:        2%{?dist}
+Version:        2016.11.28
+Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
 License:        LGPLv2+
 URL:            http://live555.com/liveMedia/
 
 Source0:        http://live555.com/liveMedia/public/live.%{version}.tar.gz
+Source1:        http://live555.com/liveMedia/public/changelog.txt
 # Rebase of:
 # https://anonscm.debian.org/cgit/pkg-multimedia/liblivemedia.git/plain/debian/patches/add-pkgconfig-file.patch
 Patch0:         2016.11.06-add-pkgconfig-file.patch
@@ -55,6 +56,7 @@ This package contains libraries for applications that use %{name}.
 %setup -q -n live
 %patch0 -p1
 sed -i -e 's|-O2|%{optflags}|' config.linux-with-shared-libraries
+cp %{SOURCE1} .
 
 %build
 ./genMakefiles linux-with-shared-libraries
@@ -76,6 +78,7 @@ chmod +x %{buildroot}%{_libdir}/*
 %files libs
 %{!?_licensedir:%global license %%doc}
 %license COPYING
+%doc changelog.txt
 %{_libdir}/*.so.*
 
 %files devel
@@ -84,6 +87,10 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Wed Jan 04 2017 Simone Caronni <negativo17@gmail.com> - 1:2016.11.28-1
+- Update to version 2016.11.28.
+- Add changelog.
+
 * Fri Nov 11 2016 Simone Caronni <negativo17@gmail.com> - 1:2016.11.06-2
 - Update Epoch.
 
