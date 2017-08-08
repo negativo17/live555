@@ -1,3 +1,19 @@
+2017.07.18:
+- Updated "BitVector" to support a signed version of "get_expGolomb()", and fixed our H.264/265
+  parsing code to use the signed version where appropriate.
+  (Thanks to Toson Huang and Long Zhang for reporting this.)
+
+2017.06.04:
+- Fixed a bug in "RTPInterface::removeStreamSocket()" that could cause not all 'TCP stream'
+  records for a given socket number to be removed if a TCP socket I/O error occurred
+  (during RTP/RTCP-over-TCP streaming).  (Thanks to Gerald Hansink et al for reporting this.)
+
+2017.05.24:
+- In "RTSPClient.cpp", moved the call to "clearServerRequestAlternativeByteHandler()" from the
+  "RTSPClient" destructor to the "resetTCPSockets()" function (which is called more often).
+  This should eliminate a 'pointer to a deleted object' error.
+  (Thanks to Gerald Hansink et al for reporting this.)
+
 2017.04.26:
 - Added a new public member function "numClientSessions()" to "GenericMediaServer"
   (and therefore to "RTSPServer", which inherits from this).  This allows a server to
