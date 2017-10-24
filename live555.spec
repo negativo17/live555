@@ -1,6 +1,6 @@
 Name:           live555
-Version:        2017.07.18
-Release:        2%{?dist}
+Version:        2017.09.12
+Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
 License:        LGPLv2+
@@ -86,6 +86,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Tue Oct 24 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.09.12-1
+- Update to 2017.09.12.
+
 * Tue Oct 24 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.07.18-2
 - Fix compilation with glibc 2.26+.
 

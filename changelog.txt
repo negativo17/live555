@@ -1,3 +1,17 @@
+Next version, in progress:
+- Made a change to "SIPClient" to better handle Asterisk SIP servers with authentication.
+  (Thanks to Rus.)
+
+2017.09.12:
+- Made some improvements/bug fixes to AVI indexes in "AVIFileSink".
+  (Thanks to Victor V. Vinokurov.)
+- Updated the handling of the "writeTimeoutInMilliseconds" parameter in the "makeSocketBlocking()"
+  function to work correctly on Windows. (Thanks to Jeff Shanab for noting this issue.)
+- Added support for adding Opus audio to MPEG Transport Streams.  This is done by setting the
+  "mpegVersion" parameter to 3 in "MPEG2TransportStreamFromESSource::addNewAudioSource()" or
+  "MPEG2TransportStreamMultiplexor::handleNewBuffer()".
+  (Thanks to Praveen Mathad for suggesting this.)
+
 2017.07.18:
 - Updated "BitVector" to support a signed version of "get_expGolomb()", and fixed our H.264/265
   parsing code to use the signed version where appropriate.
@@ -1548,7 +1562,7 @@
 - Fixed "RTSPClient" to properly handle "SETUP" responses that (erroneously) do not contain a "Transport:" header.
   (Thanks to Eric Huertel for noting this.)
 - Changed the destructors of "AVIFileSink" and "QuickTimeFileSink" to delete chained data structures iteratively,
-  rather than recursively, to avoid possible stack overflow if we these chains are very long.
+  rather than recursively, to avoid possible stack overflow if these chains are very long.
   (Thanks to Anton Chmelev for this suggestion.)
 - Removed some unused member fields from a few classes.
 
