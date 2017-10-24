@@ -1,6 +1,6 @@
 Name:           live555
 Version:        2017.07.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
 License:        LGPLv2+
@@ -55,17 +55,17 @@ This package contains libraries for applications that use %{name}.
 %prep
 %setup -q -n live
 %patch0 -p1
-sed -i -e 's|-O2|%{optflags}|' config.linux-with-shared-libraries
+sed -i -e 's|-O2|%{optflags} -DXLOCALE_NOT_USED|' config.linux-with-shared-libraries
 cp %{SOURCE1} .
 
 %build
 ./genMakefiles linux-with-shared-libraries
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir}
+%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
 
-# Fix libraries' permissions
+# Fix libraries permissions
 chmod +x %{buildroot}%{_libdir}/*
 
 %post libs -p /sbin/ldconfig
@@ -76,7 +76,6 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_bindir}/*
 
 %files libs
-%{!?_licensedir:%global license %%doc}
 %license COPYING
 %doc changelog.txt
 %{_libdir}/*.so.*
@@ -87,6 +86,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Tue Oct 24 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.07.18-2
+- Fix compilation with glibc 2.26+.
+
 * Tue Aug 08 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.07.18-1
 - Update to 2017.07.18.
 
