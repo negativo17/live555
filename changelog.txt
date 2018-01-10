@@ -1,4 +1,12 @@
-Next version, in progress:
+2017.10.28:
+- Fixed the handling of the LIVE555 Proxy Server's "-u <username> <password>" command-line option if
+  the "REGISTER" command is also implemented (i.e., with "-R").  Now, when we handle "REGISTER",
+  the <username> and <password> are used to access the REGISTER'ed back-end stream, if necessary.
+- Changed the server handling of the RTSP "REGISTER" command to (if "reuseConnection" is True) delay
+  a short period of time (100ms) between replying to the "REGISTER" command, and actually
+  handling it.  This is intended to reduce/avoid the possibility of a subsequent "DESCRIBE" command
+  ending up in the client ("REGISTER" sender)'s buffer, before the socket gets reused for handling
+  incoming RTSP commands.  (Thanks to Durgesh Tanuku for noting this issue.)
 - Made a change to "SIPClient" to better handle Asterisk SIP servers with authentication.
   (Thanks to Rus.)
 
