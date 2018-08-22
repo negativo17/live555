@@ -1,3 +1,54 @@
+2018.08.05:
+- Added a new class "RawVideoRTPSource" for handling incoming 'raw video' RTP packets (RFC 4175).
+  (Thanks to Denis Genestier for providing the first draft of this.)
+
+2018.07.07:
+- Fixed a problem with the "openRTSP" application, if it's run with both the "-c" and "-P <interval>"
+  options.  (Thanks to Giancarlo for noticing this.)
+
+2018.07.01:
+- Added a new "groupsock" function "setSocketKeepAlive()" which (tries to) set up a 'keepalive'
+  on TCP sockets, so that it will survive temporary network interruptions.  Add an option for
+  calling this to the "setupStreamSocket()" function, and call this when creating sockets for
+  the RTSP server.
+  (Thanks to Warren Young and Denis Genestier for this suggestion.)
+
+2018.04.25:
+- Fixed the implementation of "unpackBandwidthEfficientData()" in "AMRAudioRTPSource", to ensure
+  that we can never overflow the output buffer.  (Thanks to GRIMM for reporting this issue.)
+
+2018.02.28:
+- Updated "RTSPClient" to properly handle a completely empty response to "GET_PARAMETER".
+  (Thanks to Eric Heurtel for noting this issue.)
+
+2018.02.26:
+- Added protection against an alleged potential memory leak in
+  "OnDemandServerMediaSubsession::setSDPLinesFromRTPSink()".
+
+2018.02.18:
+- Updated "config.macosx" to add "-DNEED_XLOCALE_H=1" to the command line for compiling, to
+  compensate for the changes made in the previous release.
+
+2018.02.12:
+- Because glibc >= 2.26 no longer has the include file "xlocale.h", we no longer try to include it,
+  unless "NEED_XLOCALE_H" is defined.  Also, we renamed "XLOCALE_NOT_USED" to "NEWLOCALE_NOT_USED".
+  (If you're confused by this, see the comments at the top of "liveMedia/include/Locale.hh".)
+- Added comments to clarify that the "fileNameArray" input parameter to
+  "ByteStreamMultiFileSource::createNew()" is required to have a terminating NULL 'file name',
+  to indicate the end of the array.
+
+2018.01.29:
+- Made some minor changes that supposedly make the code build better for some versions of Windows
+
+2018.01.24:
+- Changed the parameter signature (and implementation) of "RTSPClient::handlePLAYResponse()" so that
+  "session" and "subsession" are pointer rather than reference parameters - because they can be NULL.
+  (Thanks to Marco Porsch for noting this issue - and *no* thanks to the Videolan people, who
+  apparently discovered this (and patched this in their own version of the code) two months ago,
+  without informing us.)
+- Removed an "if (&session != NULL)" from the "setSpeed()" implementation, because it should always
+  be true (because "session" is a reference parameter).
+
 2017.10.28:
 - Fixed the handling of the LIVE555 Proxy Server's "-u <username> <password>" command-line option if
   the "REGISTER" command is also implemented (i.e., with "-R").  Now, when we handle "REGISTER",
