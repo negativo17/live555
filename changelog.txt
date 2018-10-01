@@ -1,3 +1,31 @@
+2018.09.18:
+- Fixed a bug in "RawVideoRTPSink".  (Thanks to Denis Genestier.)
+
+2018.09.10:
+- Fixed a potential 'double deletion' in "RawVideoRTPSource.cpp". (Thanks to Denis Genestier.)
+
+2018.09.06:
+- Removed some stray files that had accidentally been left in the previous release.
+
+2018.09.05:
+- Added "RawVideoRTPSink" for streaming raw video over RTP, and also updated "MatroskaFile"
+  to support Matroska files that contain raw video tracks.
+  (Many thanks to Denis Genestier for contributing this.)
+
+2018.08.28a:
+- Oops, the previous version wasn't building properly; it's fixed now.
+
+2018.08.28:
+- Fixed a bug in "RawVideoRTPSource" (it was instantiating the wrong 'factory' subclass)
+
+2018.08.27:
+- Fixed a problem (in "GroupsockHelper.cpp") that could cause compilation problems on Mac OS X.
+
+2018.08.26:
+- Updated the RTSP server implementation to protect against a bogus "Content-Length:" value
+  (in a request from a client) causing a pointer wraparound.
+  (Thanks to Ori Hollander of VDOO for reporting this.)
+
 2018.08.05:
 - Added a new class "RawVideoRTPSource" for handling incoming 'raw video' RTP packets (RFC 4175).
   (Thanks to Denis Genestier for providing the first draft of this.)
