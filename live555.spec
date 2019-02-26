@@ -12,7 +12,7 @@ Source1:        http://live555.com/liveMedia/public/changelog.txt
 # https://anonscm.debian.org/cgit/pkg-multimedia/liblivemedia.git/plain/debian/patches/add-pkgconfig-file.patch
 Patch0:         2016.11.06-add-pkgconfig-file.patch
 
-BuildRequires:  gcc
+BuildRequires:  gcc-c++
 
 %description
 This code forms a set of C++ libraries for multimedia streaming, using open
