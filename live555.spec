@@ -70,9 +70,7 @@ cp %{SOURCE1} .
 # Fix libraries permissions
 chmod +x %{buildroot}%{_libdir}/*
 
-%post libs -p /sbin/ldconfig
-
-%postun libs -p /sbin/ldconfig
+%ldconfig_scriptlets libs
 
 %files
 %{_bindir}/*
