@@ -1,5 +1,5 @@
 Name:           live555
-Version:        2019.06.28
+Version:        2019.08.28
 Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
@@ -86,6 +86,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Thu Sep 05 2019 Simone Caronni <negativo17@gmail.com> - 1:2019.08.28-1
+- Update to 2019.08.28.
+
 * Sun Jul 07 2019 Simone Caronni <negativo17@gmail.com> - 1:2019.06.28-1
 - Update to 2019.06.28.
 
