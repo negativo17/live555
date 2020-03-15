@@ -1,5 +1,5 @@
 Name:           live555
-Version:        2019.08.28
+Version:        2020.03.06
 Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
@@ -13,6 +13,7 @@ Source1:        http://live555.com/liveMedia/public/changelog.txt
 Patch0:         2016.11.06-add-pkgconfig-file.patch
 
 BuildRequires:  gcc-c++
+BuildRequires:  openssl-devel
 
 %description
 This code forms a set of C++ libraries for multimedia streaming, using open
@@ -57,7 +58,7 @@ This package contains libraries for applications that use %{name}.
 %prep
 %setup -q -n live
 %patch0 -p1
-sed -i -e 's|-O2|%{optflags} -DXLOCALE_NOT_USED|' config.linux-with-shared-libraries
+sed -i -e 's|-O2|%{optflags} -Wno-misleading-indentation|' config.linux-with-shared-libraries
 cp %{SOURCE1} .
 
 %build
@@ -86,6 +87,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
+* Sun Mar 15 2020 Simone Caronni <negativo17@gmail.com> - 1:2020.03.06-1
+- Update to 2020.03.06.
+
 * Thu Sep 05 2019 Simone Caronni <negativo17@gmail.com> - 1:2019.08.28-1
 - Update to 2019.08.28.
 
