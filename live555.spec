@@ -1,5 +1,5 @@
 Name:           live555
-Version:        2020.05.15
+Version:        2020.06.25
 Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
@@ -121,7 +121,7 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/libgroupsock.so.8
 %{_libdir}/libgroupsock.so.8.2.4
 %{_libdir}/libliveMedia.so.79
-%{_libdir}/libliveMedia.so.79.1.0
+%{_libdir}/libliveMedia.so.79.1.2
 
 %files devel
 %{_includedir}/BasicUsageEnvironment
@@ -135,6 +135,10 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Sun Jun 28 2020 Simone Caronni <negativo17@gmail.com> - 1:2020.06.25-1
+- Update to 2020.06.25.
+- Trim changelog.
+
 * Sat May 23 2020 Simone Caronni <negativo17@gmail.com> - 1:2020.05.15-1
 - Update to 2020.05.15.
 - Update SPEC file.
@@ -150,56 +154,3 @@ chmod +x %{buildroot}%{_libdir}/*
 
 * Tue Feb 26 2019 Simone Caronni <negativo17@gmail.com> - 1:2019.02.03-1
 - Update to 2019.02.03.
-
-* Mon Oct 01 2018 Simone Caronni <negativo17@gmail.com> - 1:2018.09.18-1
-- Update to 2018.09.18.
-
-* Thu Sep 20 2018 Simone Caronni <negativo17@gmail.com> - 1:2018.08.05-2
-- Add GCC build requirement.
-
-* Wed Aug 22 2018 Simone Caronni <negativo17@gmail.com> - 1:2018.08.05-1
-- Update to 2018.08.05.
-
-* Fri Apr 27 2018 Simone Caronni <negativo17@gmail.com> - 1:2018.04.25-1
-- Update to 2018.04.25.
-
-* Wed Jan 10 2018 Simone Caronni <negativo17@gmail.com> - 1:2017.10.28-1
-- Update to 2017.10.28.
-
-* Tue Oct 24 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.09.12-1
-- Update to 2017.09.12.
-
-* Tue Oct 24 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.07.18-2
-- Fix compilation with glibc 2.26+.
-
-* Tue Aug 08 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.07.18-1
-- Update to 2017.07.18.
-
-* Sun May 14 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.04.26-1
-- Update to 2017.04.26.
-
-* Tue Feb 14 2017 Simone Caronni <negativo17@gmail.com> - 1:2017.01.26-1
-- Update to 2017.01.26.
-
-* Wed Jan 04 2017 Simone Caronni <negativo17@gmail.com> - 1:2016.11.28-1
-- Update to version 2016.11.28.
-- Add changelog.
-
-* Fri Nov 11 2016 Simone Caronni <negativo17@gmail.com> - 1:2016.11.06-2
-- Update Epoch.
-
-* Wed Nov 09 2016 Simone Caronni <negativo17@gmail.com> - 2016.11.06-1
-- Update to 2016.11.06.
-
-* Fri Jul 22 2016 Simone Caronni <negativo17@gmail.com> - 2016.07.19-1
-- Update to 2016.07.19.
-- Add pkg-config patch from Debian.
-
-* Tue May 24 2016 Simone Caronni <negativo17@gmail.com> - 2016.05.20-1
-- Update to version 2016.05.20.
-
-* Wed Mar 16 2016 Simone Caronni <negativo17@gmail.com> - 2016.03.14-2
-- Fix libs subpackage rename.
-
-* Tue Mar 15 2016 Simone Caronni <negativo17@gmail.com> - 2016.03.14-1
-- First build.
