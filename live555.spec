@@ -1,5 +1,5 @@
 Name:           live555
-Version:        2020.06.25
+Version:        2020.07.09
 Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
@@ -121,7 +121,7 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/libgroupsock.so.8
 %{_libdir}/libgroupsock.so.8.2.4
 %{_libdir}/libliveMedia.so.79
-%{_libdir}/libliveMedia.so.79.1.2
+%{_libdir}/libliveMedia.so.79.1.3
 
 %files devel
 %{_includedir}/BasicUsageEnvironment
@@ -135,6 +135,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Wed Jul 15 2020 Simone Caronni <negativo17@gmail.com> - 1:2020.07.09-1
+- Update to 2020.07.09.
+
 * Sun Jun 28 2020 Simone Caronni <negativo17@gmail.com> - 1:2020.06.25-1
 - Update to 2020.06.25.
 - Trim changelog.
