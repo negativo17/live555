@@ -1,5 +1,5 @@
 Name:           live555
-Version:        2020.07.09
+Version:        2022.02.07
 Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
@@ -118,10 +118,10 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/libBasicUsageEnvironment.so.1.0.1
 %{_libdir}/libUsageEnvironment.so.3
 %{_libdir}/libUsageEnvironment.so.3.1.0
-%{_libdir}/libgroupsock.so.8
-%{_libdir}/libgroupsock.so.8.2.4
-%{_libdir}/libliveMedia.so.79
-%{_libdir}/libliveMedia.so.79.1.3
+%{_libdir}/libgroupsock.so.30
+%{_libdir}/libgroupsock.so.30.0.10
+%{_libdir}/libliveMedia.so.106
+%{_libdir}/libliveMedia.so.106.0.1
 
 %files devel
 %{_includedir}/BasicUsageEnvironment
@@ -135,6 +135,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Tue Mar 22 2022 Simone Caronni <negativo17@gmail.com> - 1:2022.02.07-1
+- Update to 2022.02.07.
+
 * Wed Jul 15 2020 Simone Caronni <negativo17@gmail.com> - 1:2020.07.09-1
 - Update to 2020.07.09.
 
