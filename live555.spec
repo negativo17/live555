@@ -1,5 +1,5 @@
 Name:           live555
-Version:        2022.07.14
+Version:        2023.11.30
 Release:        1%{?dist}
 Epoch:          1
 Summary:        RTP/RTCP, RTSP, SIP streaming tools
@@ -61,6 +61,10 @@ sed -i -e 's|-O2|%{optflags} -Wno-misleading-indentation|' config.linux-with-sha
 cp %{SOURCE1} .
 
 %build
+# C++20 is because of:
+# BasicTaskScheduler.cpp:191:40: error: 'struct std::atomic_flag' has no member named 'test'
+export CXXFLAGS="-std=c++20 %{optflags}"
+
 ./genMakefiles linux-with-shared-libraries
 %make_build
 
@@ -114,14 +118,14 @@ chmod +x %{buildroot}%{_libdir}/*
 %files libs
 %license COPYING
 %doc changelog.txt
-%{_libdir}/libBasicUsageEnvironment.so.1
-%{_libdir}/libBasicUsageEnvironment.so.1.0.1
+%{_libdir}/libBasicUsageEnvironment.so.2
+%{_libdir}/libBasicUsageEnvironment.so.2.0.4
 %{_libdir}/libUsageEnvironment.so.3
 %{_libdir}/libUsageEnvironment.so.3.1.0
 %{_libdir}/libgroupsock.so.30
-%{_libdir}/libgroupsock.so.30.0.10
-%{_libdir}/libliveMedia.so.107
-%{_libdir}/libliveMedia.so.107.1.0
+%{_libdir}/libgroupsock.so.30.1.13
+%{_libdir}/libliveMedia.so.112
+%{_libdir}/libliveMedia.so.112.0.0
 
 %files devel
 %{_includedir}/BasicUsageEnvironment
@@ -135,6 +139,9 @@ chmod +x %{buildroot}%{_libdir}/*
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Tue Dec 19 2023 Simone Caronni <negativo17@gmail.com> - 1:2023.11.30-1
+- Updte to 2023.11.30.
+
 * Fri Sep 23 2022 Simone Caronni <negativo17@gmail.com> - 1:2022.07.14-1
 - Update to 2022.07.14.
 
